@@ -1,75 +1,110 @@
+
 package com.unpri.charactermanager;
 
 import com.unpri.charactermanager.model.Character;
 import com.unpri.charactermanager.model.CharacterType;
+import com.unpri.charactermanager.model.CharacterManager;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Character Manager v0.1 ===");
-        System.out.println();
+        System.out.println("===== CHARACTER MANAGER TP5 =====");
 
-        // Membuat tiga karakter menggunakan constructor pertama
-        Character hero = new Character(
-                "Arjuna", CharacterType.WARRIOR, 5);
+        CharacterManager manager = new CharacterManager();
 
-        Character wizard = new Character(
-                "Merlin", CharacterType.MAGE, 3);
+        // 1. Tambah karakter
+        System.out.println("\n--- 1. TAMBAH KARAKTER ---");
 
-        Character scout = new Character(
-                "Athena", CharacterType.ARCHER, 4);
+        manager.addCharacter(
+                new Character("Arjuna", CharacterType.WARRIOR, 5));
 
-        // Menampilkan tiga karakter
-        System.out.println("=== Daftar Karakter ===");
-        System.out.println(hero);
-        System.out.println(wizard);
-        System.out.println(scout);
+        manager.addCharacter(
+                new Character("Merlin", CharacterType.MAGE, 3));
 
-        // Demo level up
-        System.out.println();
-        System.out.println("=== Demo Level Up ===");
-        System.out.println(">> " + hero.getName() + " level up!");
+        manager.addCharacter(
+                new Character("Athena", CharacterType.ARCHER, 4));
 
-        hero.setLevel(hero.getLevel() + 1);
+        manager.addCharacter(
+                new Character("Bima", CharacterType.WARRIOR, 8));
 
-        System.out.println("After level up: " + hero);
+        manager.addCharacter(
+                new Character("Luna", CharacterType.MAGE, 6));
 
-        // Menampilkan informasi karakter
-        System.out.println();
-        System.out.println("=== Informasi Hero ===");
-        System.out.println("Nama: " + hero.getName());
-        System.out.println("Jenis: " + hero.getType());
-        System.out.println("Level: " + hero.getLevel());
-        System.out.println("HP: " + hero.getHitPoints());
-        System.out.println("Attack: " + hero.getAttackPower());
+        for (Character character : manager.getAllCharacters()) {
+            System.out.println(character);
+        }
 
-        // Mini-Challenge: membuat karakter baru
-        System.out.println();
-        System.out.println("=== Mini-Challenge: Mana dan isAlive ===");
+        System.out.println("Total karakter: "
+                + manager.getTotalCharacters());
 
-        Character healer = new Character(
-                "Luna", CharacterType.HEALER, 2);
+        // 2. Tes nama duplikat
+        System.out.println("\n--- 2. TES DUPLIKAT ---");
 
-        healer.setMana(80);
+        boolean berhasil = manager.addCharacter(
+                new Character("Arjuna", CharacterType.WARRIOR, 2));
 
-        System.out.println("Karakter baru: " + healer);
-        System.out.println("Mana Luna: " + healer.getMana());
-        System.out.println("Apakah Luna masih hidup? "
-                + healer.isAlive());
+        System.out.println("Tambah Arjuna kedua: "
+                + (berhasil ? "BERHASIL" : "DITOLAK"));
 
-        // Menguji isAlive ketika HP mencapai nol
-        healer.setHitPoints(0);
+        System.out.println("Total karakter: "
+                + manager.getTotalCharacters());
 
-        System.out.println("HP Luna setelah berubah: "
-                + healer.getHitPoints());
+        // 3. Tes pencarian
+        System.out.println("\n--- 3. TES PENCARIAN ---");
 
-        System.out.println("Apakah Luna masih hidup? "
-                + healer.isAlive());
+        Character hasil = manager.findByName("Merlin");
 
-        // Jumlah objek yang dibuat
-        System.out.println();
-        System.out.println("Total karakter dibuat: "
-                + Character.getTotalCharacterCreated());
+        System.out.println(hasil != null
+                ? "Ditemukan: " + hasil
+                : "Merlin tidak ditemukan");
+
+        // 4. Tes rata-rata level
+        System.out.println("\n--- 4. RATA-RATA LEVEL ---");
+
+        System.out.println("Rata-rata level: "
+                + manager.getAverageLevel());
+
+        // 5. Tes pencarian berdasarkan tipe
+        System.out.println("\n--- 5. PENCARIAN BERDASARKAN TIPE ---");
+
+        for (Character character :
+                manager.findByType(CharacterType.WARRIOR)) {
+            System.out.println(character);
+        }
+
+        // 6. Fitur sendiri: karakter dengan attack tertinggi
+        System.out.println("\n--- 6. KARAKTER TERKUAT ---");
+
+        Character strongest = manager.findStrongest();
+
+        System.out.println(strongest != null
+                ? strongest
+                : "Belum ada karakter");
+
+        // 7. Tes defensive copy
+        System.out.println("\n--- 7. TES DEFENSIVE COPY ---");
+
+        int totalAwal = manager.getTotalCharacters();
+
+        manager.getAllCharacters().clear();
+
+        System.out.println("Total sebelum: " + totalAwal);
+
+        System.out.println("Total setelah salinan dibersihkan: "
+                + manager.getTotalCharacters());
+
+        // 8. Tes penghapusan
+        System.out.println("\n--- 8. TES PENGHAPUSAN ---");
+
+        boolean dihapus = manager.removeCharacter("Athena");
+
+        System.out.println("Athena berhasil dihapus: "
+                + (dihapus ? "YA" : "TIDAK"));
+
+        System.out.println("Total setelah penghapusan: "
+                + manager.getTotalCharacters());
+
+        System.out.println("\n===== PENGUJIAN TP5 SELESAI =====");
     }
 }
