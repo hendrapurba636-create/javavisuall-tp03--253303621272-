@@ -1,122 +1,29 @@
-
 package com.unpri.charactermanager.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterManager {
+    private List<Character> characters;
 
-    private final ArrayList<Character> characters = new ArrayList<>();
+    public CharacterManager() {
+        characters = new ArrayList<>();
+    }
 
-    /**
-     * Menambahkan karakter jika nama belum digunakan.
-     */
-    public boolean addCharacter(Character character) {
-        if (character == null || findByName(character.getName()) != null) {
-            return false;
-        }
-
+    public void addCharacter(Character character) {
         characters.add(character);
-        return true;
     }
 
-    /**
-     * Mencari karakter berdasarkan nama tanpa membedakan huruf besar/kecil.
-     */
-    public Character findByName(String name) {
-        if (name == null) {
-            return null;
-        }
-
-        for (Character character : characters) {
-            if (character.getName().equalsIgnoreCase(name)) {
-                return character;
-            }
-        }
-
-        return null;
+    public List<Character> getCharacters() {
+        return characters;
     }
 
-    /**
-     * Menghapus karakter berdasarkan nama.
-     */
-    public boolean removeCharacter(String name) {
-        Character character = findByName(name);
-
-        if (character == null) {
-            return false;
-        }
-
-        characters.remove(character);
-        return true;
-    }
-
-    /**
-     * Mengembalikan jumlah karakter yang tersimpan.
-     */
-    public int getTotalCharacters() {
-        return characters.size();
-    }
-
-    /**
-     * Mengembalikan salinan daftar karakter.
-     */
-    public ArrayList<Character> getAllCharacters() {
-        return new ArrayList<>(characters);
-    }
-
-    /**
-     * Menghitung rata-rata level karakter. Mengembalikan 0 jika kosong.
-     */
     public double getAverageLevel() {
-        if (characters.isEmpty()) {
-            return 0.0;
+        if (characters.isEmpty()) return 0.0;
+        int totalLevel = 0;
+        for (Character c : characters) {
+            totalLevel += c.getLevel();
         }
-
-        int total = 0;
-
-        for (Character character : characters) {
-            total += character.getLevel();
-        }
-
-        return (double) total / characters.size();
-    }
-
-    /**
-     * Mengembalikan daftar karakter berdasarkan tipe.
-     */
-    public ArrayList<Character> findByType(CharacterType type) {
-        ArrayList<Character> result = new ArrayList<>();
-
-        if (type == null) {
-            return result;
-        }
-
-        for (Character character : characters) {
-            if (character.getType() == type) {
-                result.add(character);
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * Mencari karakter dengan attack power tertinggi.
-     * Mengembalikan null jika daftar kosong.
-     */
-    public Character findStrongest() {
-        if (characters.isEmpty()) {
-            return null;
-        }
-
-        Character strongest = characters.get(0);
-
-        for (Character character : characters) {
-            if (character.getAttackPower() > strongest.getAttackPower()) {
-                strongest = character;
-            }
-        }
-
-        return strongest;
+        return (double) totalLevel / characters.size();
     }
 }
