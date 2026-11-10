@@ -1,59 +1,75 @@
-# Character Manager — TP3 (Java Visual SIH-6406)
+# TP5 — Character Manager
 
-## Deskripsi Project
+## A. Implementasi Core
 
-Character Manager adalah program berbasis Java yang digunakan untuk mengelola data karakter dalam sebuah aplikasi sederhana. Program ini menerapkan konsep Object-Oriented Programming (OOP), seperti encapsulation, constructor, enum, getter dan setter, serta method untuk mengelola atribut karakter.
+Pada TP5, aplikasi Character Manager dikembangkan menggunakan Java dengan konsep Object-Oriented Programming (OOP).
 
-Pada TP3 ini, program dikembangkan dengan menambahkan atribut `mana`, validasi nilai mana, dan method `isAlive()` untuk memeriksa apakah karakter masih hidup berdasarkan nilai hit points (HP).
+Fitur yang dikerjakan:
+- `equals()` membandingkan karakter berdasarkan nama.
+- `addCharacter()` menambahkan karakter.
+- `findByName()` mencari karakter berdasarkan nama.
+- `removeCharacter()` menghapus karakter berdasarkan nama.
+- `getTotalCharacters()` menghitung jumlah karakter.
+- `getAllCharacters()` mengembalikan salinan daftar karakter.
+- Nama karakter duplikat ditolak.
 
-## Fitur
+## B. Mini-Challenge
 
-- Membuat objek karakter menggunakan dua constructor.
-- Menggunakan `CharacterType` untuk menentukan jenis karakter.
-- Mengelola atribut karakter menggunakan encapsulation.
-- Melakukan perubahan level karakter.
-- Menghitung kembali HP dan attack berdasarkan level.
-- Menyimpan atribut `mana` dengan validasi agar tidak bernilai negatif.
-- Memeriksa status hidup karakter menggunakan `isAlive()`.
-- Menampilkan informasi karakter menggunakan `toString()`.
+### 1. getAverageLevel()
 
-## Screenshot Output Program
+Menghitung rata-rata level semua karakter. Jika daftar kosong, method mengembalikan `0` untuk menghindari pembagian dengan nol.
 
-Berikut adalah bukti hasil program Character Manager yang dijalankan melalui terminal.
+### 2. findByType(CharacterType type)
 
-![Screenshot Output Character Manager](screenshot/output.png)
+Mencari semua karakter berdasarkan tipe, seperti `WARRIOR`, `MAGE`, dan `ARCHER`.
 
-*Catatan: Ganti gambar di atas dengan screenshot terminal milikmu yang menampilkan tiga karakter, demo level up, serta hasil pemanggilan `isAlive()`.*
+## C. Fitur Analitik Rancangan Sendiri
 
-## Struktur Folder Project
+### findStrongest()
 
-```text
-CharacterManager/
-├── src/
-│   ├── com/
-│   │   └── unpri/
-│   │       └── charactermanager/
-│   │           └── model/
-│   │               ├── Character.java
-│   │               └── CharacterType.java
-│   └── Main.java
-├── screenshots/
-│   └── output.png
-└── README.md
-```
+Method `findStrongest()` mencari karakter dengan nilai attack power tertinggi.
 
-*Catatan: Struktur di atas merupakan contoh. Sesuaikan dengan struktur folder project yang benar-benar kamu gunakan.*
+Method ini membandingkan attack power setiap karakter dan mengembalikan karakter dengan nilai tertinggi. Jika daftar kosong, method mengembalikan `null`.
 
-## Identitas Mahasiswa
+Fitur ini memudahkan pengguna mengetahui karakter dengan serangan paling kuat.
 
-- **Nama Lengkap:** [Hendra Lampita Purba]
-- **NIM:** [253303621272]
-- **Kelas:** [3 Pagi B]
-- **Mata Kuliah:** Java Visual SIH-6406
+## D. Pengujian Program
+
+Pengujian dilakukan melalui `Main.java`, meliputi:
+
+1. Menambahkan karakter.
+2. Menolak nama duplikat.
+3. Mencari karakter berdasarkan nama.
+4. Menghitung rata-rata level.
+5. Mencari karakter berdasarkan tipe.
+6. Mencari karakter terkuat.
+7. Menguji defensive copy.
+8. Menghapus karakter.
+
+### Screenshot Output TP5
+
+Berikut hasil pengujian program Character Manager TP5.
+
+## Screenshot Output TP5
 
 
-## Dokumentasi Analisis Desain
+![Hasil Output TP5](screenshot/output_tp5.png)
 
-Dokumen analisis desain dan ekosistem Java untuk Bagian D dapat diakses melalui Google Docs berikut:
+## E. Analisis Reference dan Rancangan
 
-https://docs.google.com/document/d/1R-qgvV7pJYBEpoJwBTIROjb3eyhRu5bwnFcKhvuADbQ/edit?usp=sharing
+Analisis dibuat dalam Google Docs dengan pembahasan:
+
+- Perbedaan reference dan primitive value.
+- Perilaku `a == b` pada objek Java.
+- Fungsi variabel `static`.
+- Penggunaan `equals()` untuk membandingkan nama karakter.
+- Risiko mengembalikan ArrayList asli.
+- Pentingnya defensive copy dan encapsulation.
+
+**Link Google Docs:** https://docs.google.com/document/d/1S60qNP8OS_x9-JDbXr7FKg7BFrEI1UnHa7W4CokkDWQ/edit?usp=sharing
+
+## Teknologi
+
+- Java
+- Visual Studio Code
+- Git dan GitHub
