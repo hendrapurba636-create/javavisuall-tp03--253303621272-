@@ -1,38 +1,55 @@
+
 package com.unpri.charactermanager.model;
 
 public class Character {
 
+    private int id;
     private String name;
     private CharacterType type;
     private int level;
     private int hitPoints;
-    private int attack;
+    private int attackPower;
     private int mana;
 
-    // Constructor pertama
+    private static int totalCharacterCreated = 0;
+
+    // Constructor sederhana
     public Character(String name, CharacterType type) {
-        this.name = name;
-        this.type = type;
-        this.level = 1;
-        this.hitPoints = 100;
-        this.attack = 10;
-        this.mana = 0;
+        this(name, type, 1, 100, 10);
     }
 
-    // Constructor kedua
-    public Character(
-        String name,
-        CharacterType type,
-        int level,
-        int hitPoints,
-        int attack
-    ) {
+    // Constructor dengan atribut lengkap
+    public Character(String name, CharacterType type,
+                     int level, int hitPoints, int attackPower) {
+
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nama tidak boleh kosong");
+        }
+
+        if (type == null) {
+            throw new IllegalArgumentException("Tipe tidak boleh kosong");
+        }
+
+        if (level < 1 || hitPoints < 1 || attackPower < 0) {
+            throw new IllegalArgumentException("Nilai karakter tidak valid");
+        }
+
+        this.id = ++totalCharacterCreated;
         this.name = name;
         this.type = type;
         this.level = level;
         this.hitPoints = hitPoints;
-        this.attack = attack;
+        this.attackPower = attackPower;
         this.mana = 0;
+    }
+
+    // Constructor dengan level
+    public Character(String name, CharacterType type, int level) {
+        this(name, type, level, 100, 10);
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -57,8 +74,6 @@ public class Character {
 
     public void setLevel(int level) {
         this.level = level;
-        this.hitPoints = 100 + (level - 1) * 20;
-        this.attack = 10 + (level - 1) * 5;
     }
 
     public int getHitPoints() {
@@ -70,11 +85,19 @@ public class Character {
     }
 
     public int getAttack() {
-        return attack;
+        return attackPower;
     }
 
-    public void setAttack(int attack) {
-        this.attack = attack;
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public void setAttack(int attackPower) {
+        this.attackPower = attackPower;
+    }
+
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
     }
 
     public int getMana() {
@@ -82,12 +105,6 @@ public class Character {
     }
 
     public void setMana(int mana) {
-        if (mana < 0) {
-            throw new IllegalArgumentException(
-                "Mana tidak boleh bernilai negatif."
-            );
-        }
-
         this.mana = mana;
     }
 
@@ -95,13 +112,40 @@ public class Character {
         return hitPoints > 0;
     }
 
+    public void levelUp() {
+        level++;
+    }
+
+    public static int getTotalCharacterCreated() {
+        return totalCharacterCreated;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (!(obj instanceof Character)) return false;
+
+        Character other = (Character) obj;
+
+        return name.equalsIgnoreCase(other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.toLowerCase().hashCode();
+    }
+
     @Override
     public String toString() {
-        return "Character{name='" + name
-            + "', type=" + type
-            + ", level=" + level
-            + ", hitPoints=" + hitPoints
-            + ", attack=" + attack
-            + ", mana=" + mana + "}";
+        return "Character{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", level=" + level +
+                ", hitPoints=" + hitPoints +
+                ", attackPower=" + attackPower +
+                ", mana=" + mana +
+                '}';
     }
 }

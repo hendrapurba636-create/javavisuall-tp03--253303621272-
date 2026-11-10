@@ -1,75 +1,26 @@
-# TP5 — Character Manager
+## TP8 – Character Manager GUI & MVC
 
-## A. Implementasi Core
+### 1. Screenshot MainWindow
 
-Pada TP5, aplikasi Character Manager dikembangkan menggunakan Java dengan konsep Object-Oriented Programming (OOP).
+Screenshot berikut menunjukkan aplikasi Character Manager yang menampilkan minimal 5 karakter beserta statistik rata-rata level.
 
-Fitur yang dikerjakan:
-- `equals()` membandingkan karakter berdasarkan nama.
-- `addCharacter()` menambahkan karakter.
-- `findByName()` mencari karakter berdasarkan nama.
-- `removeCharacter()` menghapus karakter berdasarkan nama.
-- `getTotalCharacters()` menghitung jumlah karakter.
-- `getAllCharacters()` mengembalikan salinan daftar karakter.
-- Nama karakter duplikat ditolak.
+[![alt text](sesudah.png)]
 
-## B. Mini-Challenge
+### 2. Aliran Data dan Penerapan MVC
 
-### 1. getAverageLevel()
+Aliran data dimulai dari Main.java yang membuat objek CharacterManager dan menambahkan data karakter. Selanjutnya, CharacterManager menyimpan dan mengelola seluruh data karakter menggunakan ArrayList. MainWindow menerima objek CharacterManager untuk menampilkan daftar karakter secara dinamis serta statistik rata-rata level pada GUI. Dalam konsep MVC, CharacterManager berperan sebagai Model, MainWindow sebagai View, sedangkan Main.java mengatur proses awal aplikasi dan menghubungkan Model dengan View.
 
-Menghitung rata-rata level semua karakter. Jika daftar kosong, method mengembalikan `0` untuk menghindari pembagian dengan nol.
+### 3. Karakter Baru
 
-### 2. findByType(CharacterType type)
+Berikut adalah karakter baru yang ditambahkan pada TP8:
 
-Mencari semua karakter berdasarkan tipe, seperti `WARRIOR`, `MAGE`, dan `ARCHER`.
+| Nama Karakter | Tipe | Level | Alasan Pemilihan |
+|---|---|---|---|
+| [Karakter baru 1] | [Tipe] | [Level] | [Alasan] |
+| [Karakter baru 2] | [Tipe] | [Level] | [Alasan] |
 
-## C. Fitur Analitik Rancangan Sendiri
+### 4. Link Google Docs – Bagian D
 
-### findStrongest()
+Dokumentasi analisis GUI dan MVC dapat dilihat melalui link Google Docs berikut:
 
-Method `findStrongest()` mencari karakter dengan nilai attack power tertinggi.
-
-Method ini membandingkan attack power setiap karakter dan mengembalikan karakter dengan nilai tertinggi. Jika daftar kosong, method mengembalikan `null`.
-
-Fitur ini memudahkan pengguna mengetahui karakter dengan serangan paling kuat.
-
-## D. Pengujian Program
-
-Pengujian dilakukan melalui `Main.java`, meliputi:
-
-1. Menambahkan karakter.
-2. Menolak nama duplikat.
-3. Mencari karakter berdasarkan nama.
-4. Menghitung rata-rata level.
-5. Mencari karakter berdasarkan tipe.
-6. Mencari karakter terkuat.
-7. Menguji defensive copy.
-8. Menghapus karakter.
-
-### Screenshot Output TP5
-
-Berikut hasil pengujian program Character Manager TP5.
-
-## Screenshot Output TP5
-
-
-![Hasil Output TP5](screenshot/output_tp5.png)
-
-## E. Analisis Reference dan Rancangan
-
-Analisis dibuat dalam Google Docs dengan pembahasan:
-
-- Perbedaan reference dan primitive value.
-- Perilaku `a == b` pada objek Java.
-- Fungsi variabel `static`.
-- Penggunaan `equals()` untuk membandingkan nama karakter.
-- Risiko mengembalikan ArrayList asli.
-- Pentingnya defensive copy dan encapsulation.
-
-**Link Google Docs:** https://docs.google.com/document/d/1S60qNP8OS_x9-JDbXr7FKg7BFrEI1UnHa7W4CokkDWQ/edit?usp=sharing
-
-## Teknologi
-
-- Java
-- Visual Studio Code
-- Git dan GitHub
+https://docs.google.com/document/d/1fkfzwVjK17aURpChZRXZLctBwW-eVeEF3cLVGIiAJfI/edit?usp=sharing
