@@ -1,74 +1,59 @@
-## TP12 — Character Manager v0.5
+# Character Manager — TP3 (Java Visual SIH-6406)
 
-### A. Wireframe Tampilan Aplikasi
+## Deskripsi Project
 
-Berikut rancangan tata letak aplikasi Character Manager v0.5:
+Character Manager adalah program berbasis Java yang digunakan untuk mengelola data karakter dalam sebuah aplikasi sederhana. Program ini menerapkan konsep Object-Oriented Programming (OOP), seperti encapsulation, constructor, enum, getter dan setter, serta method untuk mengelola atribut karakter.
+
+Pada TP3 ini, program dikembangkan dengan menambahkan atribut `mana`, validasi nilai mana, dan method `isAlive()` untuk memeriksa apakah karakter masih hidup berdasarkan nilai hit points (HP).
+
+## Fitur
+
+- Membuat objek karakter menggunakan dua constructor.
+- Menggunakan `CharacterType` untuk menentukan jenis karakter.
+- Mengelola atribut karakter menggunakan encapsulation.
+- Melakukan perubahan level karakter.
+- Menghitung kembali HP dan attack berdasarkan level.
+- Menyimpan atribut `mana` dengan validasi agar tidak bernilai negatif.
+- Memeriksa status hidup karakter menggunakan `isAlive()`.
+- Menampilkan informasi karakter menggunakan `toString()`.
+
+## Screenshot Output Program
+
+Berikut adalah bukti hasil program Character Manager yang dijalankan melalui terminal.
+
+![Screenshot Output Character Manager](screenshot/output.png)
+
+*Catatan: Ganti gambar di atas dengan screenshot terminal milikmu yang menampilkan tiga karakter, demo level up, serta hasil pemanggilan `isAlive()`.*
+
+## Struktur Folder Project
 
 ```text
-+------------------------------------------------------+
-|              HEADER (NORTH)                          |
-|  Character Manager                    8 Karakter     |
-+------------------------------------------------------+
-|                                                      |
-|  PANEL STATISTIK (PANEL TAMBAHAN)                    |
-|  Total Karakter | Rata-rata Level                    |
-|                                                      |
-+-----------------------------------+------------------+
-|                                   |                  |
-|  DAFTAR KARAKTER (CENTER)         |  LEGENDA (EAST)  |
-|  +-----------------------------+  |                  |
-|  | Arjuna - WARRIOR            |  |  WARRIOR         |
-|  +-----------------------------+  |  MAGE            |
-|  | Merlin - MAGE               |  |  ARCHER          |
-|  +-----------------------------+  |  HEALER          |
-|  | Athena - ARCHER             |  |                  |
-|  +-----------------------------+  |                  |
-|  | ...                         |  |                  |
-|  +-----------------------------+  |                  |
-|           SCROLLBAR              |                  |
-+-----------------------------------+------------------+
-|  Total: 8 karakter       Siap              v0.5      |
-+------------------------------------------------------+
+CharacterManager/
+├── src/
+│   ├── com/
+│   │   └── unpri/
+│   │       └── charactermanager/
+│   │           └── model/
+│   │               ├── Character.java
+│   │               └── CharacterType.java
+│   └── Main.java
+├── screenshots/
+│   └── output.png
+└── README.md
 ```
 
-### B. Screenshot Aplikasi
+*Catatan: Struktur di atas merupakan contoh. Sesuaikan dengan struktur folder project yang benar-benar kamu gunakan.*
 
-**1. Tampilan Ukuran Awal**
+## Identitas Mahasiswa
 
-![alt text](awal_tp12.png)
+- **Nama Lengkap:** [Hendra Lampita Purba]
+- **NIM:** [253303621272]
+- **Kelas:** [3 Pagi B]
+- **Mata Kuliah:** Java Visual SIH-6406
 
-**2. Tampilan Jendela Dilebarkan**
 
-![alt text](diperbesar.png)
+## Dokumentasi Analisis Desain
 
-**3. Tampilan Jendela Dikecilkan**
+Dokumen analisis desain dan ekosistem Java untuk Bagian D dapat diakses melalui Google Docs berikut:
 
-![alt text](diperkecil.png)
-
-### C. Tabel Pengamatan Resize
-
-| Kondisi | Prediksi | Hasil Pengamatan |
-|---|---|---|
-| Ukuran awal | Semua panel tampil sesuai posisi masing-masing. | Sesuai, panel tampil dengan rapi. |
-| Jendela dilebarkan | Area CENTER mendapatkan ruang lebih luas. | Daftar karakter memiliki ruang lebih besar. |
-| Jendela dikecilkan | Area daftar menjadi lebih sempit dan scrollbar muncul jika diperlukan. | Scrollbar muncul ketika daftar tidak muat. |
-
-### D. Struktur Panel Bersarang
-
-Aplikasi Character Manager v0.5 menggunakan BorderLayout sebagai layout utama untuk membagi tampilan menjadi beberapa wilayah. Pada bagian NORTH terdapat panel header dan panel statistik sebagai panel tambahan. Bagian CENTER berisi JScrollPane yang menampung panel daftar karakter, sedangkan bagian EAST berisi panel legenda dengan BoxLayout. Pada bagian SOUTH terdapat status bar yang menampilkan jumlah karakter, status aplikasi, dan versi aplikasi.
-
-### E. Alasan Pemilihan Panel Tambahan dan Layout
-
-Panel tambahan yang digunakan adalah panel statistik dengan GridLayout 2x2. Layout ini dipilih karena dapat menyusun informasi statistik secara teratur dengan ukuran komponen yang sama. Informasi seperti total karakter dan rata-rata level dapat ditampilkan dengan lebih rapi.
-
-Layout yang tidak dipilih adalah FlowLayout karena susunan komponennya dapat berpindah baris ketika ukuran panel berubah. Untuk panel statistik, GridLayout lebih sesuai karena posisi informasi tetap terstruktur dan mudah dibaca.
-
-### F. Analisis Layout & MVC (Bagian D)
-
-Dokumen analisis lengkap mengenai Layout Manager dan Model View Controller (MVC) dapat diakses melalui Google Docs berikut:
-
-**Nama Dokumen:** JavaVisual_TP12_[253303621272]_Hendra_Lampita_Purba
-
-**Link Google Docs:https://docs.google.com/document/d/12g-T1RPf5JA4j2xEdNSSYXEo5AWP-GoomvTfBacAwug/edit?usp=sharin
-
-**Akses:** Anyone with the link — Viewer
+https://docs.google.com/document/d/1R-qgvV7pJYBEpoJwBTIROjb3eyhRu5bwnFcKhvuADbQ/edit?usp=sharing
