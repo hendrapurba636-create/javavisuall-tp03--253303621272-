@@ -10,19 +10,19 @@ import com.unpri.charactermanager.model.CharacterType;
 
 public class AppTheme {
 
-    // Warna utama aplikasi
-    public static final Color BACKGROUND = new Color(245, 247, 250);
-    public static final Color PRIMARY = new Color(35, 55, 85);
-    public static final Color TEXT = new Color(40, 40, 40);
+    // Warna utama aplikasi (versi TP10)
+    public static final Color BACKGROUND = new Color(240, 246, 252);
+    public static final Color PRIMARY = new Color(25, 75, 115);
+    public static final Color TEXT = new Color(35, 45, 60);
     public static final Color WHITE = Color.WHITE;
-    public static final Color GOLD = new Color(184, 134, 11);
-    public static final Color BORDER_COLOR = new Color(210, 215, 220);
+    public static final Color GOLD = new Color(190, 130, 15);
+    public static final Color BORDER_COLOR = new Color(190, 205, 220);
 
     // Warna berdasarkan role
-    public static final Color WARRIOR_COLOR = new Color(255, 220, 220);
-    public static final Color MAGE_COLOR = new Color(220, 225, 255);
-    public static final Color ARCHER_COLOR = new Color(220, 245, 220);
-    public static final Color HEALER_COLOR = new Color(255, 245, 200);
+    public static final Color WARRIOR_COLOR = new Color(255, 225, 215);
+    public static final Color MAGE_COLOR = new Color(220, 235, 255);
+    public static final Color ARCHER_COLOR = new Color(220, 245, 230);
+    public static final Color HEALER_COLOR = new Color(255, 240, 210);
 
     // Batas level untuk warna emas
     public static final int GOLD_LEVEL_LIMIT = 5;
