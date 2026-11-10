@@ -1,4 +1,3 @@
-
 package view;
 
 import java.awt.Color;
@@ -18,6 +17,14 @@ public class AppTheme {
     public static final Color GOLD = new Color(184, 134, 11);
     public static final Color BORDER_COLOR = new Color(210, 215, 220);
 
+    // Alias warna untuk layout v0.5
+    public static final Color BG_MAIN = BACKGROUND;
+    public static final Color TEXT_MAIN = TEXT;
+    public static final Color TEXT_LIGHT = PRIMARY;
+
+    public static final Color BG_STATUS = Color.decode("#0d0d1a");
+    public static final Color TEXT_MUTED = Color.decode("#9d9dbf");
+
     // Warna berdasarkan role
     public static final Color WARRIOR_COLOR = new Color(255, 220, 220);
     public static final Color MAGE_COLOR = new Color(220, 225, 255);
@@ -36,6 +43,12 @@ public class AppTheme {
 
     public static final Font BOLD_FONT =
             new Font(Font.SANS_SERIF, Font.BOLD, 14);
+
+    // Alias font untuk layout v0.5
+    public static final Font FONT_TITLE = TITLE_FONT;
+    public static final Font FONT_BODY = NORMAL_FONT;
+    public static final Font FONT_MONO =
+            new Font(Font.MONOSPACED, Font.PLAIN, 12);
 
     // Border aplikasi
     public static final Border CARD_BORDER =
@@ -58,5 +71,10 @@ public class AppTheme {
             default:
                 return BACKGROUND;
         }
+    }
+
+    // Deskripsi berdasarkan role
+    public static String describe(CharacterType role) {
+        return role.name();
     }
 }
